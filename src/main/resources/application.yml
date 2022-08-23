@@ -1,0 +1,36 @@
+spring:
+  redis:
+    host: 192.168.0.83
+    port: 6379
+    password: secret
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://192.168.0.83:3300/product_dev?useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowPublicKeyRetrieval=true
+    username: root
+    password: secret
+    minimum-idle: 10
+    maximum-pool-size: 50
+    auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mapping: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 100
+        order_inserts: true
+        order_updates: true
+        format_sql: true
+        #        enable_lazy_load_no_trans: true
+        globally_quoted_identifiers: true
+        default_batch_fetch_size: 1000
+server:
+  servlet:
+    context-path: /
+  port: 9999
